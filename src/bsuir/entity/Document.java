@@ -40,18 +40,26 @@ public class Document {
     }
 
     public void setHeader(String header) {
-        this.header = header;
+        synchronized (this) {
+            this.header = header;
+        }
     }
 
     public void setCreateDate(LocalDate createDate) {
-        this.createDate = createDate;
+        synchronized (this) {
+            this.createDate = createDate;
+        }
     }
 
     public void setAuthor(String author) {
-        this.author = author;
+        synchronized (this) {
+            this.author = author;
+        }
     }
 
     public void setContext(String context) {
-        this.context = context;
+        synchronized (this) {
+            this.context = context;
+        }
     }
 }

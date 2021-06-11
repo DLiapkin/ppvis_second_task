@@ -36,23 +36,33 @@ public class Folder {
     }
 
     public void setName(String name) {
-        this.name = name;
+        synchronized (this) {
+            this.name = name;
+        }
     }
 
     public void setDocuments(List<Document> documents) {
-        this.documents = documents;
+        synchronized (this) {
+            this.documents = documents;
+        }
     }
 
     public void setFolders(List<Folder> folders) {
-        this.folders = folders;
+        synchronized (this) {
+            this.folders = folders;
+        }
     }
 
     public boolean addDocument(Document document) {
-        return documents.add(document);
+        synchronized (this) {
+            return documents.add(document);
+        }
     }
 
     public boolean addFolder(Folder folder) {
-        return folders.add(folder);
+        synchronized (this) {
+            return folders.add(folder);
+        }
     }
 
     public static Folder getRootFolder() {
